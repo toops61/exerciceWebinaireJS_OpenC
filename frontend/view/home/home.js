@@ -12,8 +12,8 @@ fetch("http://localhost:4000/api/article")
                                                                         <div class="card-header ">
                                                                             <h5 class="card-title d-flex justify-content-between">${article.title}<span class="publication-date">${article.getFormatedDate()}</span></h5>
                                                                         </div>
-                                                                        <img src="http://localhost:4000/${article.image}" data-id="${article.id}" class="card-img-top">
-                                                                        <span class="fa-stack fa-2x addFavorite">
+                                                                        <img src="http://localhost:4000/${article.image}" class="card-img-top">
+                                                                        <span class="fa-stack fa-2x addFavorite" data-id="${article.id}">
                                                                             <i class="fas fa-star fa-stack-1x"></i>
                                                                             <i class="far fa-star fa-stack-1x"></i>
                                                                         </span>
@@ -26,6 +26,7 @@ fetch("http://localhost:4000/api/article")
         document.querySelectorAll(".addFavorite").forEach(star => {
             star.addEventListener("click",function(){
                 addFavorites(this.dataset.id);
+                this.setAttribute("class", "fa-stack fa-2x addFavorite activated")
             })
         })
     });
